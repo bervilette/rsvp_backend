@@ -1,0 +1,20 @@
+{% include "header.html" %}
+    <h1>Documentations</h1>
+
+            {% for docu in docu_list %}
+                <fieldset>
+                    <img src="/rsvp/static/images/{{docu["image"]}}">
+                    <br>
+                    <div class="h2">{{docu["name"]}}</div>
+                    <br>
+                    <div class="h3">{{docu["prices"]}}</div> 
+                    <br>
+                    <a href="/documentationdetails?code={{docu["code"]}}"><input type="submit" value="Details"></a>
+                    <br>
+                </fieldset>
+
+            {% endfor %}
+    <br>
+    <a href='/services'><input type="submit" value="Back to Services"></a>
+
+{% include "footer.html" %}

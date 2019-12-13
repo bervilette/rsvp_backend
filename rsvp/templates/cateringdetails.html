@@ -1,0 +1,22 @@
+{% include "header.html" %}
+
+    <form action="/addtofaves" method="POST">
+        <fieldset>
+            <img src="/rsvp/static/images/{{caterer["image"]}}">
+            <h1>{{caterer["name"]}}</h1>
+            {{caterer["prices"]}} <br><br>
+            <b>CONTACT</b> <br>
+            {{caterer["number"]}} <br>
+            {{caterer["email"]}}
+            <br>
+            {% if session["user"] is defined %}
+                <input type="hidden" name="code" value="{{code}}">
+                <input type="submit" value="Favorite">
+            {% endif %}
+            <br>
+        </fieldset>
+    </form>
+
+    <a href='/CATERING'><input type="submit" value="Back"></a>
+          
+{% include "footer.html" %}

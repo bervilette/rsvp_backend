@@ -1,0 +1,15 @@
+{% include "header.html" %}
+    <h1>Services</h1>
+
+{% for service in service_list %}
+    <form action='/{{ service["name"] }}'>
+        <fieldset>
+                <img src="/static/images/{{ service["image"]}}" height="150">
+                <h2>{{ service["name"] }}</h2><br>
+                <p>{{ service["description"] }}</p><br>
+                <input type="submit" value="View List"/>
+        </fieldset>
+    </form>
+{% endfor %}
+        
+{% include "footer.html" %}

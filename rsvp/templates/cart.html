@@ -1,0 +1,37 @@
+{% include "header.html" %}
+    <div class="h1" style="width:20%;margin-top:7%;margin-left:40%;text-align:center">FAVORITES</div>
+
+{% if session["cart"] is defined %}
+        
+    {% for item in session["cart"].values() %}
+
+        <fieldset style="margin-top:20%;margin-left:40%;text-align:center">
+            <img src="/rsvp/static/images/{{ item["image"] }}"><br>
+            <div>{{ item["service"] }}</div><br>
+            <div class="h2">{{ item["name"] }}</div><br>
+            <div class="h3">{{ item["prices"] }}</div><br>
+            
+            
+            <a href="/{{ item["service"] }}details?code={{ item["code"] }}"><input type="submit" value="Details"></a>
+            <br>
+                    
+            <form action="/updatefaves" method="POST">
+                <input type="hidden" name="code" value="{{ item['code'] }}">
+                <input type="submit"  name="submit" value="Remove">
+            </form>
+        </fieldset>
+            
+
+    {% endfor %}
+
+        <a href="/services"><input type="submit" style="width: 80%;margin-left:10%" value="Back to Services"></a>
+
+{% else %}
+        <div class="h2" style="width:50%;margin-top:13%;margin-left:25%;text-align:center;margin-bottom:5%;font-style: normal">Oh no! It's empty.</div>
+        <img src="/static/images/emptycart.png" style="margin-top:15%;width:40%;margin-left:30%">
+        <a href="/services"><input type="submit" style="width:40%;margin-left:-40%;margin-top:48%" value="View Services"></a>
+
+{% endif %}
+
+{% include "footer.html" %}
+

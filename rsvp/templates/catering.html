@@ -1,0 +1,20 @@
+{% include "header.html" %}
+    <h1>Catering</h1>
+
+            {% for caterer in caterer_list %}
+                <fieldset>
+                    <img src="/rsvp/static/images/{{caterer["image"]}}">
+                    <br>
+                    <div class="h2">{{caterer["name"]}}</div>
+                    <br>
+                    <div class="h3">{{caterer["prices"]}}</div> 
+                    <br>
+                    <a href="/cateringdetails?code={{caterer["code"]}}"><input type="submit" value="Details"></a>
+                    <br>
+                </fieldset>
+
+            {% endfor %}
+    <br>
+    <a href='/services'><input type="submit" value="Back to Services"></a>
+
+{% include "footer.html" %}

@@ -1,0 +1,23 @@
+{% include "header.html" %}
+
+    <form action="/addtofaves" method="POST">
+        <fieldset>
+            <img src="/rsvp/static/images/{{venue["image"]}}">
+            <h1>{{venue["name"]}}</h1>
+            <b>LOCATIONS: </b> {{venue["address"]}} <br><br>
+            {{venue["prices"]}} <br><br>
+            <b>CONTACT</b> <br>
+            {{venue["number"]}} <br>
+            {{venue["email"]}}
+            <br>
+            {% if session["user"] is defined %}
+                <input type="hidden" name="code" value="{{code}}">
+                <input type="submit" value="Favorite">
+            {% endif %}
+            <br>
+        </fieldset>
+    </form>
+
+    <a href='/VENUES'><input type="submit" value="Back"></a>
+          
+{% include "footer.html" %}
